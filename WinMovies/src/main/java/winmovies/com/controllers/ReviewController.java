@@ -30,14 +30,14 @@ public class ReviewController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Mono<Review>> findById(@PathVariable String id) {
+    public ResponseEntity<Mono<Review>> findById(@PathVariable final String id) {
         Mono<Review> review = reviewService.findById(id);
         return review != null ?
                 ResponseEntity.ok(review) : ResponseEntity.notFound().build();
     }
 
     @GetMapping("/byUser/{userId}")
-    public ResponseEntity<Flux<Review>> findByUserId(@PathVariable String userId) {
+    public ResponseEntity<Flux<Review>> findByUserId(@PathVariable final String userId) {
         Flux<Review> reviews = reviewService.findByUserId(userId);
         return ResponseEntity.ok(reviews);
     }
